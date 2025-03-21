@@ -36,12 +36,12 @@ namespace negocio
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Imagen = (string)datos.Lector["ImagenUrl"];
-                    aux.Categoria = new Categoria();
-                    aux.Categoria.Id = (int)datos.Lector["Id_Descripcion"];
-                    aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
-                    aux.Marca = new Marca();
-                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-                    aux.Marca.Id = (int)datos.Lector["Id_Marca"];
+                    aux.Categoria_Articulo = new Categoria();
+                    aux.Categoria_Articulo.Id = (int)datos.Lector["Id_Descripcion"];
+                    aux.Categoria_Articulo.Descripcion = (string)datos.Lector["Categoria"];
+                    aux.Marca_Articulo = new Marca();
+                    aux.Marca_Articulo.Descripcion = (string)datos.Lector["Marca"];
+                    aux.Marca_Articulo.Id = (int)datos.Lector["Id_Marca"];
                     decimal precio = (decimal)datos.Lector["Precio"];
                     aux.Precio = Math.Round(precio, 2);
 

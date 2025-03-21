@@ -13,5 +13,10 @@ namespace TPFinalNivel3CasafusFranco
 		{
 
 		}
-	}
+
+        protected void txtImagen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
