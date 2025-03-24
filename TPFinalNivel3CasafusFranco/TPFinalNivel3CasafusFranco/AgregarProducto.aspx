@@ -11,23 +11,23 @@
     <div class="row g-3">
         <div class="col-md-2">
             <label for="txtId" class="form-label">ID</label>
-            <input type="number" class="form-control" id="txtId" readonly="readonly">
+            <asp:TextBox ID="txtId" runat="server" CssClass="form-control" ReadOnly="true" TextMode="Number"></asp:TextBox>
         </div>
         <div class="col-md-2">
-            <label for="txtCodigo" class="form-label">Codigo</label>
-            <input type="text" class="form-control" id="txtCodigo">
+            <label for="txtCodigo" class="form-label">Codigo</label>            
+            <asp:TextBox ID="txtCodigo" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
         <div class="col-md-6">
             <label for="txtNombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="txtNombre">
+            <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
         <div class="col-md-2">
             <label for="txtPrecio" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="txtPrecio">
+            <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
         </div>
         <div class="col-md-6">
             <label for="txtDescripcion" class="form-label">Descripcion</label>
-            <input type="text" class="form-control" id="txtDescripcion">
+            <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
         <div class="col-md-3">
             <label for="ddlMarca" class="form-label">Marca</label>
@@ -61,7 +61,7 @@
 
     </div>
 
-    <asp:Button Text="Guardar" runat="server" CssClass="btn btn-primary " />
-    <asp:Button Text="Volver" runat="server" CssClass="btn btn-outline-primary" />
+    <asp:Button Text="Guardar" runat="server" CssClass="btn btn-primary " ID="btnGuardar" OnClick="btnGuardar_Click"/>
+    <asp:Button Text="Volver" runat="server" CssClass="btn btn-outline-primary" ID="btnVolver" OnClick="btnVolver_Click"/>
 
 </asp:Content>

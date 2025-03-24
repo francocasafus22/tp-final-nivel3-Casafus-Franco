@@ -63,5 +63,75 @@ namespace negocio
 
         }
 
+        public void Agregar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("insert into Articulos (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @ImagenUrl, @Precio);");
+                datos.setParametro("@Codigo", nuevo.Codigo);
+                datos.setParametro("@Nombre", nuevo.Nombre);
+                datos.setParametro("@Descripcion", nuevo.Descripcion);
+                datos.setParametro("@IdMarca", nuevo.Marca_Articulo.Id);
+                datos.setParametro("@IdCategoria", nuevo.Categoria_Articulo.Id);
+                datos.setParametro("@ImagenUrl", nuevo.Imagen);
+                datos.setParametro("@Precio", nuevo.Precio);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void Modificar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("update Articulos set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenUrl = @ImagenUrl, Precio = @Precio where Id = @Id;");
+                datos.setParametro("@Codigo", nuevo.Codigo);
+                datos.setParametro("@Nombre", nuevo.Nombre);
+                datos.setParametro("@Descripcion", nuevo.Descripcion);
+                datos.setParametro("@IdMarca", nuevo.Marca_Articulo.Id);
+                datos.setParametro("@IdCategoria", nuevo.Categoria_Articulo.Id);
+                datos.setParametro("@ImagenUrl", nuevo.Imagen);
+                datos.setParametro("@Precio", nuevo.Precio);
+                datos.setParametro("@Id", nuevo.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public void Eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("delete from Articulos where Id = @Id;");
+                datos.setParametro("@Id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

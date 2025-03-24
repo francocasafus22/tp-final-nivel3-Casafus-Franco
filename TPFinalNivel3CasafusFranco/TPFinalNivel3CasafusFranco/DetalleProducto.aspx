@@ -31,10 +31,10 @@
             </div>
             <p class="mb-4"><%: Articulo.Descripcion %></p>
             <div class="mb-4">
-                <h5>Categoria: <%: Articulo.Categoria %></h5>
+                <h5>Categoria: <%: Articulo.Categoria_Articulo %></h5>
             </div>
             <div class="mb-4">
-                <h5>Marca: <%: Articulo.Marca %></h5>
+                <h5>Marca: <%: Articulo.Marca_Articulo %></h5>
             </div>
             <div class="mb-4">
                 <label for="cantidad" class="form-label">Cantidad:</label>
