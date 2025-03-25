@@ -11,14 +11,21 @@ namespace TPFinalNivel3CasafusFranco
 {
 	public partial class Default : System.Web.UI.Page
 	{
-        public List<Articulo> listaArticulos { get; set; }
+        public List<Articulo> listaArticulos { get; set; }      
         protected void Page_Load(object sender, EventArgs e)
-		{
-			ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulos = negocio.Listar("");
-            Session.Add("listaArticulos", listaArticulos);
-			
-        }
+		{         
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                listaArticulos = negocio.Listar("");
+                Session.Add("listaArticulos", listaArticulos);
+                
+                txtBuscar.Attributes.Add("placeholder", "Buscar por nombre, marca o categoria...");
 
+        }
+        protected void txtBuscar_TextChanged1(object sender, EventArgs e)
+        {
+            listaArticulos = ((List<Articulo>)Session["listaArticulos"]).FindAll(x => x.Nombre.ToLower().Contains(txtBuscar.Text.ToLower()) || 
+            x.Categoria_Articulo.Descripcion.ToLower().Contains(txtBuscar.Text.ToLower()) ||
+            x.Marca_Articulo.Descripcion.ToLower().Contains(txtBuscar.Text.ToLower()));
+        }
     }
 }

@@ -20,9 +20,7 @@ namespace TPFinalNivel3CasafusFranco
                 dgvArticulos.DataSource = Session["listaArticulos"];
                 dgvArticulos.DataBind();
                 txtBuscar.Attributes.Add("placeholder", "Buscar por nombre, marca o categoria...");
-                //Agregar buscados por filtro, que puedas seleccionar la marca o categorias por un droplist y ordenar por menor precio etc...
-            }           
-               
+            }
         }
 
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,6 +53,50 @@ namespace TPFinalNivel3CasafusFranco
                   x.Marca_Articulo.Descripcion.ToLower().Contains(txtBuscar.Text.ToLower()));            
             dgvArticulos.DataSource = listaFiltrada;
             dgvArticulos.DataBind();
+        }
+
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlCampo.SelectedIndex == 0)
+            {
+                ddlCriterio.Items.Clear();
+                ddlCriterio.Items.Add("Menor a");
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                ddlCriterio.Items.Clear();
+                ddlCriterio.Items.Add("Comienza con");
+                ddlCriterio.Items.Add("Termina con");
+                ddlCriterio.Items.Add("Contiene");
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                dgvArticulos.DataSource = negocio.busquedaFiltrada(txtFiltro.Text, ddlCampo.SelectedItem.ToString(), ddlCriterio.SelectedItem.ToString());
+                dgvArticulos.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
+        }
+
+        protected void cbAvanzado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbAvanzado.Checked)
+            {
+                dgvArticulos.DataSource = Session["listaArticulos"];
+                dgvArticulos.DataBind();
+            }
+
         }
     }
 }

@@ -133,5 +133,120 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<Articulo> busquedaFiltrada(string filtro, string v1, string v2)
+        {
+            List<Articulo> list = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "select A.Id as Id, A.Codigo, Nombre, A.Descripcion as Descripcion, ImagenUrl,C.Id as Id_Descripcion ,C.Descripcion as Categoria, M.Id as Id_Marca,M.Descripcion as Marca,Precio from Articulos A inner join CATEGORIAS C ON A.IdCategoria = C.Id inner join MARCAS M on A.IdMarca = M.Id ";
+
+                switch (v1)
+                {
+                    case "Codigo":
+                        switch (v2)
+                        {
+                            case "Comienza con":
+                                consulta += "where A.Codigo like @filtro";
+                                datos.setParametro("@filtro", filtro + "%");
+                                break;
+                            case "Termina con":
+                                consulta += "where A.Codigo like @filtro";
+                                datos.setParametro("@filtro", "%" + filtro);
+                                break;
+                            case "Contiene":
+                                consulta += "where A.Codigo like @filtro";
+                                datos.setParametro("@filtro", "%" + filtro + "%");
+                                break;
+                            default: break;
+                        }
+                        break;
+                    case "Nombre":
+                        switch (v2)
+                        {
+                            case "Comienza con":
+                                consulta += "where A.Nombre like @filtro";
+                                datos.setParametro("@filtro", filtro + "%");
+                                break;
+                            case "Termina con":
+                                consulta += "where A.Nombre like @filtro";
+                                datos.setParametro("@filtro", "%" + filtro);
+                                break;
+                            case "Contiene":
+                                consulta += "where A.Nombre like @filtro";
+                                datos.setParametro("@filtro", "%" + filtro + "%");
+                                break;
+                            default: break;
+                        }
+                        break;
+                    case "Precio":
+                        switch (v2)
+                        {
+                            case "Mayor a":
+                                consulta += "where A.Precio > @filtro";
+                                datos.setParametro("@filtro", filtro);
+                                break;
+                            case "Menor a":
+                                consulta += "where A.Precio < @filtro";
+                                datos.setParametro("@filtro", filtro);
+                                break;
+                            case "Igual a":
+                                consulta += "where A.Precio = @filtro";
+                                datos.setParametro("@filtro", filtro);
+                                break;
+                            default: break;
+                        }
+                        break;
+
+                    case "Categoria":
+                        consulta += "where C.Descripcion = @filtro";
+                        datos.setParametro("@filtro", v2);
+                        break;
+
+                    case "Marca":
+                        consulta += "where M.Descripcion = @filtro";
+                        datos.setParametro("@filtro", v2);
+                        break;
+
+                    default:
+                        break;
+                }
+
+                datos.setConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Imagen = (string)datos.Lector["ImagenUrl"];
+                    aux.Categoria_Articulo = new Categoria();
+                    aux.Categoria_Articulo.Id = (int)datos.Lector["Id_Descripcion"];
+                    aux.Categoria_Articulo.Descripcion = (string)datos.Lector["Categoria"];
+                    aux.Marca_Articulo = new Marca();
+                    aux.Marca_Articulo.Descripcion = (string)datos.Lector["Marca"];
+                    aux.Marca_Articulo.Id = (int)datos.Lector["Id_Marca"];
+                    decimal precio = (decimal)datos.Lector["Precio"];
+                    aux.Precio = Math.Round(precio, 2);
+
+                    list.Add(aux);
+                }
+                return list;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
