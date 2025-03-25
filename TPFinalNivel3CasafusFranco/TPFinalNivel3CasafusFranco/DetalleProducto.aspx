@@ -21,14 +21,7 @@
                 <span class="h4 me-2">$<%: Articulo.Precio %></span>
                 <span class="text-muted"><s>$<%: Articulo.Precio + Articulo.Precio/10%></s></span>
             </div>
-            <div class="mb-3">
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-half text-warning"></i>
-                <span class="ms-2">4.5 (120 reviews)</span>
-            </div>
+            <p class="text-muted">155 vendidos</p>
             <p class="mb-4"><%: Articulo.Descripcion %></p>
             <div class="mb-4">
                 <h5>Categoria: <%: Articulo.Categoria_Articulo %></h5>

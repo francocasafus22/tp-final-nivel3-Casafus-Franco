@@ -134,6 +134,8 @@ namespace negocio
             }
         }
 
+       
+
         public List<Articulo> busquedaFiltrada(string filtro, string v1, string v2)
         {
             List<Articulo> list = new List<Articulo>();

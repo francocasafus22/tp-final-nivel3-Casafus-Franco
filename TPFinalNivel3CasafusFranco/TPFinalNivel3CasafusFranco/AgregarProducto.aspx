@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AgregarProducto.aspx.cs" Inherits="TPFinalNivel3CasafusFranco.AgregarProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion {
+            color: red;
+            font-size: 12px
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -15,19 +21,25 @@
         </div>
         <div class="col-md-2">
             <label for="txtCodigo" class="form-label">Codigo</label>            
-            <asp:TextBox ID="txtCodigo" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtCodigo" CssClass="form-control" runat="server" MaxLength="50"></asp:TextBox>
+            <asp:RequiredFieldValidator ErrorMessage="Codigo requerido" ControlToValidate="txtCodigo" runat="server" CssClass="validacion" />
         </div>
         <div class="col-md-6">
             <label for="txtNombre" class="form-label">Nombre</label>
-            <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server" MaxLength="50"></asp:TextBox>
+            <asp:RequiredFieldValidator ErrorMessage="Nombre requerido" ControlToValidate="txtNombre" runat="server" CssClass="validacion"/>
+           
         </div>
         <div class="col-md-2">
             <label for="txtPrecio" class="form-label">Precio</label>
-            <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
+            <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server" TextMode="Number"></asp:TextBox>
+            <asp:RangeValidator ErrorMessage="Precio Máximo 10 Millones" ControlToValidate="txtPrecio" runat="server" MinimumValue="1" MaximumValue="10000000"/>
+            <asp:RequiredFieldValidator ErrorMessage="Precio requerido" ControlToValidate="txtPrecio" runat="server" CssClass="validacion"/>
         </div>
         <div class="col-md-6">
             <label for="txtDescripcion" class="form-label">Descripcion</label>
-            <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server" MaxLength="150"></asp:TextBox>
+            <asp:RequiredFieldValidator ErrorMessage="Descripcion requerida" ControlToValidate="txtDescripcion" runat="server" CssClass="validacion" />
         </div>
         <div class="col-md-3">
             <label for="ddlMarca" class="form-label">Marca</label>
@@ -44,7 +56,7 @@
             <ContentTemplate>
                 <div class="col-md-12 mb-3">
                     <label for="txtImagen" class="form-label">Url Imagen:</label>
-                    <asp:TextBox ID="txtImagen" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtImagen_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtImagen" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" MaxLength="1000"></asp:TextBox>
                 </div>
 
                 <div class="col-md-12 d-flex justify-content-center mb-3">

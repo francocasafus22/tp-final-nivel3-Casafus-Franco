@@ -62,30 +62,48 @@ namespace TPFinalNivel3CasafusFranco
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            Articulo newArticulo= new Articulo();
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
 
-            newArticulo.Codigo = txtCodigo.Text;
-            newArticulo.Nombre = txtNombre.Text;
-            newArticulo.Descripcion = txtDescripcion.Text;
-            newArticulo.Imagen = txtImagen.Text;
-            newArticulo.Precio = decimal.Parse(txtPrecio.Text);
-            newArticulo.Categoria_Articulo = new Categoria();
-            newArticulo.Categoria_Articulo.Id = int.Parse(ddlCategoria.SelectedValue);
-            newArticulo.Marca_Articulo = new Marca();
-            newArticulo.Marca_Articulo.Id = int.Parse(ddlMarca.SelectedValue);
-
-            if(txtId.Text != "")
+            try
             {
-                newArticulo.Id = int.Parse(txtId.Text);
-                negocio.Modificar(newArticulo);
-            }
-            else
-            {
-                negocio.Agregar(newArticulo);
-            }
+                
+                if (Validacion.textoVacio(txtCodigo) || Validacion.textoVacio(txtNombre) || Validacion.textoVacio(txtDescripcion) || Validacion.textoVacio(txtImagen) || Validacion.textoVacio(txtPrecio))
+                {
+                    throw new Exception("Debes completar todos los campos.");
+                }
 
-            Response.Redirect("GestionProductos.aspx", false);
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                Articulo newArticulo = new Articulo();
+
+                newArticulo.Codigo = txtCodigo.Text;
+                newArticulo.Nombre = txtNombre.Text;
+                newArticulo.Descripcion = txtDescripcion.Text;
+                newArticulo.Imagen = txtImagen.Text;
+                newArticulo.Precio = decimal.Parse(txtPrecio.Text);
+                newArticulo.Categoria_Articulo = new Categoria();
+                newArticulo.Categoria_Articulo.Id = int.Parse(ddlCategoria.SelectedValue);
+                newArticulo.Marca_Articulo = new Marca();
+                newArticulo.Marca_Articulo.Id = int.Parse(ddlMarca.SelectedValue);
+
+                if (txtId.Text != "")
+                {
+                    newArticulo.Id = int.Parse(txtId.Text);
+                    negocio.Modificar(newArticulo);
+                }
+                else
+                {
+                    negocio.Agregar(newArticulo);
+                }
+
+                Response.Redirect("GestionProductos.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

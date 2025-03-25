@@ -77,7 +77,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title"><%: item.Nombre %></h5>
-                            <h5 class="card-text  fw-bold"><%: item.Precio %></h5>
+                            <h5 class="card-text  fw-bold">$<%: item.Precio %></h5>
                             <a href="DetalleProducto.aspx?id=<%: item.Id %>" class="btn btn-primary mt-3">Ver Detalles</a>
 
                         </div>

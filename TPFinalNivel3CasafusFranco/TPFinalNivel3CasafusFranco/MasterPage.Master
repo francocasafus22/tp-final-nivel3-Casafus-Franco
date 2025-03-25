@@ -14,38 +14,47 @@
 <body>
     <form id="form1" runat="server">
 
-        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="GestionProductos.aspx">Gestion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="GestionProductos.aspx">Gestion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="MisFavoritos.aspx">Favoritos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="MiPerfil.aspx">Perfil</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex align-items-center" role="search">
+                        <asp:HyperLink ID="hyperLinkLogin" runat="server" CssClass="btn btn-outline-light me-3" NavigateUrl="Login.aspx">Iniciar Sesion</asp:HyperLink>
+                        <asp:HyperLink ID="hyperLinkRegistrar" runat="server" CssClass="btn btn-outline-light" NavigateUrl="RegisterUser.aspx">Registrarse</asp:HyperLink>
+                        <%--<asp:Button Text="Cerrar Sesion" runat="server" ID="btnCerrarSesion" CssClass="btn btn-outline-danger"/>--%>
+                        <asp:Image ID="ProfileImage" Style="height: 50px; width: 50px; border-radius: 50%; margin-left: 5px" runat="server" />
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+                <div>
+                    <hr />
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
                 </div>
             </div>
-        </nav>
-
-        <div class="container">
-            <div>
-                <hr />
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
         </div>
+
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
