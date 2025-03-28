@@ -4,5 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Error</h1>
     <asp:Label Text="text" runat="server" ID="lblError"/>
-    <a href="Default.aspx" class="btn btn-primary">Volver</a>
+    <div>
+        <a href="Default.aspx" class="btn btn-primary">Volver</a>
+    </div>
 </asp:Content>

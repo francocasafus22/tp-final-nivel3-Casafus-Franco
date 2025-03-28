@@ -11,7 +11,12 @@ namespace TPFinalNivel3CasafusFranco
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			
 		}
-	}
+
+        protected void btnSesion_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

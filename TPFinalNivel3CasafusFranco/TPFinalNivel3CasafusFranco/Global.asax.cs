@@ -44,6 +44,7 @@ namespace TPFinalNivel3CasafusFranco
 		{
             Exception exc = Server.GetLastError();
             Session.Add("error", exc.Message);
+            Server.ClearError(); // Limpia el error para evitar bucles
             Server.Transfer("Error.aspx");
         }
 

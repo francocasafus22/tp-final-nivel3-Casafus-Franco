@@ -31,6 +31,7 @@
         .table-wrapper {
             overflow-x: auto;
         }
+
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </asp:Content>
@@ -51,7 +52,7 @@
 
             <div class="col-12 d-flex justify-content-center">
                 <div class="mb-3">
-                    <asp:CheckBox ID="cbAvanzado" runat="server" Text="Filtro Avanzado" CssClass="" AutoPostBack="true" OnCheckedChanged="cbAvanzado_CheckedChanged"   />
+                    <asp:CheckBox ID="cbAvanzado" runat="server" Text="Filtro Avanzado" CssClass="" AutoPostBack="true" OnCheckedChanged="cbAvanzado_CheckedChanged" />
                 </div>
             </div>
 
@@ -82,8 +83,8 @@
                 else { }%>
 
             <div class="table-wrapper mt-3">
-                <asp:GridView ID="dgvArticulos" runat="server" CssClass="table" AutoGenerateColumns="false" DataKeyNames="Id" OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged"
-                    AllowPaging="true" PageSize="10" OnPageIndexChanging="dgvArticulos_PageIndexChanging" OnRowDeleting="dgvArticulos_RowDeleting">
+                <asp:GridView ID="dgvArticulos" runat="server" CssClass="table" AutoGenerateColumns="false" DataKeyNames="Id"
+                    AllowPaging="true" PageSize="10" OnPageIndexChanging="dgvArticulos_PageIndexChanging">
 
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Codigo" />

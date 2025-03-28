@@ -2,10 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .validacion {
-            color: red;
-            font-size: 12px
-        }
+        
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -33,10 +30,10 @@
         <div class="col-md-2">
             <label for="txtPrecio" class="form-label">Precio</label>
             <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server" TextMode="Number"></asp:TextBox>
-            <asp:RangeValidator ErrorMessage="Precio Máximo 10 Millones" ControlToValidate="txtPrecio" runat="server" MinimumValue="1" MaximumValue="10000000"/>
             <asp:RequiredFieldValidator ErrorMessage="Precio requerido" ControlToValidate="txtPrecio" runat="server" CssClass="validacion"/>
+            <asp:RangeValidator ErrorMessage="Precio fuera de rango (1 - 1 Millón)" ControlToValidate="txtPrecio" runat="server" Type="Currency" MinimumValue="1" MaximumValue="1000000" CssClass="validacion    "/>            
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-0">
             <label for="txtDescripcion" class="form-label">Descripcion</label>
             <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server" MaxLength="150"></asp:TextBox>
             <asp:RequiredFieldValidator ErrorMessage="Descripcion requerida" ControlToValidate="txtDescripcion" runat="server" CssClass="validacion" />
