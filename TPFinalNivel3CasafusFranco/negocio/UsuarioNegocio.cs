@@ -46,5 +46,25 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void Registrarse(User usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("insert into USERS (email, pass, admin) values (@mail, @pass, 0)");
+                datos.setParametro("@mail", usuario.mail);
+                datos.setParametro("@pass", usuario.password);               
+                datos.ejecutarAccion();               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

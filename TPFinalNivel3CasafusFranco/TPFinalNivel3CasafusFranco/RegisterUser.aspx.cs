@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +15,29 @@ namespace TPFinalNivel3CasafusFranco
 		{
 
 		}
-	}
+
+        protected void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+			UsuarioNegocio negocio = new UsuarioNegocio();
+			User usuario = new User();
+
+			try
+			{
+                if (Validacion.textoVacio(txtPass) || Validacion.textoVacio(txtMail))
+                {
+                    throw new Exception("Debe completar todos los campos");
+                }
+                usuario.mail = txtMail.Text;
+                usuario.password = txtPass.Text;
+                negocio.Registrarse(usuario);
+                Response.Redirect("Default.aspx", false);
+            }
+			catch (Exception ex)
+			{
+
+				Session.Add("Error.aspx", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
+        }
+    }
 }

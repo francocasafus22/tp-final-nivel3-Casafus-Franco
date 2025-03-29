@@ -43,8 +43,8 @@ namespace TPFinalNivel3CasafusFranco
 		protected void Application_Error(object sender, EventArgs e) 
 		{
             Exception exc = Server.GetLastError();
-            Session.Add("error", exc.Message);
-            Server.ClearError(); // Limpia el error para evitar bucles
+            Session.Add("Error", exc.Message);
+            Server.ClearError();
             Server.Transfer("Error.aspx");
         }
 

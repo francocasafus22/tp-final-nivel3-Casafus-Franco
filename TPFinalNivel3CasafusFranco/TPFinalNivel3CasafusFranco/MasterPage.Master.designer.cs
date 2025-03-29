@@ -33,13 +33,13 @@ namespace TPFinalNivel3CasafusFranco
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control hyperLista.
+        /// Control hlGestion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hyperLista;
+        protected global::System.Web.UI.WebControls.HyperLink hlGestion;
 
         /// <summary>
         /// Control hlFavoritos.
@@ -51,13 +51,13 @@ namespace TPFinalNivel3CasafusFranco
         protected global::System.Web.UI.WebControls.HyperLink hlFavoritos;
 
         /// <summary>
-        /// Control HyperLinkMyProfile.
+        /// Control hlPerfil.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkMyProfile;
+        protected global::System.Web.UI.WebControls.HyperLink hlPerfil;
 
         /// <summary>
         /// Control hyperLinkLogin.
