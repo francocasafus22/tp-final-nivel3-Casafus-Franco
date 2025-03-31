@@ -48,7 +48,7 @@
                             <asp:HyperLink ID="hyperLinkLogin" runat="server" CssClass="btn btn-outline-light p-1 me-2" NavigateUrl="Login.aspx">Iniciar Sesión</asp:HyperLink>
                             <asp:HyperLink ID="hyperLinkRegistrar" runat="server" CssClass="btn btn-outline-light p-1 me-2" NavigateUrl="RegisterUser.aspx">Registrarse</asp:HyperLink>
                             <asp:Button Text="Cerrar Sesión" runat="server" ID="btnSesion" CssClass="btn btn-outline-danger p-1" OnClick="btnSesion_Click" />
-                            <asp:Image ID="ProfileImage" Style="height: 40px; width: 40px; border-radius: 50%; margin-left: 10px" runat="server" />
+                            <asp:Image ID="ProfileImage" Style="height: 40px; width: 40px; border-radius: 50%; margin-left: 10px" runat="server"/>
                         </div>
                     </div>
                 </div>

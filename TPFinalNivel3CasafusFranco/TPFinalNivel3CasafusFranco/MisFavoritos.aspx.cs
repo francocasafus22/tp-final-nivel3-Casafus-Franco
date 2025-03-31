@@ -1,4 +1,5 @@
-﻿using System;
+﻿using negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,17 @@ namespace TPFinalNivel3CasafusFranco
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if(!IsPostBack)
+            {
+                if (Seguridad.SesionIniciada(Session["usuario"]))
+                {
 
-		}
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
+            }
+        }
 	}
 }

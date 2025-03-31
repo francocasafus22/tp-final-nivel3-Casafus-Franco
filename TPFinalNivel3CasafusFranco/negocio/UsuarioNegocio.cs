@@ -66,5 +66,27 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void Actualizar(User usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("update USERS set nombre=@nombre, apellido=@apellido, urlImagenPerfil=@urlImagenPerfil where Id=@id");
+                datos.setParametro("@nombre", usuario.nombre);
+                datos.setParametro("@apellido", usuario.apellido);
+                datos.setParametro("@urlImagenPerfil", usuario.Imagen);
+                datos.setParametro("@id", usuario.id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
