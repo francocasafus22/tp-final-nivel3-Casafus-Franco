@@ -25,7 +25,8 @@
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">Correo Electrónico</label>                        
-                        <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail"/>
+                        <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" TextMode="Email"/>
+                        <asp:RequiredFieldValidator ErrorMessage="Mail requerido" ControlToValidate="txtEmail" runat="server" CssClass="validacion"/>
                     </div>
                     <div class="col-md-12">
                         <label for="urlImagenPerfil" class="form-label">URL de Imagen de Perfil</label>                       

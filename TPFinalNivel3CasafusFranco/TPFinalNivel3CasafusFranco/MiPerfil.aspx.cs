@@ -54,6 +54,10 @@ namespace TPFinalNivel3CasafusFranco
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+
             UsuarioNegocio negocio = new UsuarioNegocio();
             User usuario = new User();            
             usuario.mail = txtEmail.Text;
@@ -63,6 +67,7 @@ namespace TPFinalNivel3CasafusFranco
             usuario.id = int.Parse(txtID.Text);
             negocio.Actualizar(usuario);
             Session.Add("usuario", usuario);
+            Response.Redirect("Default.aspx", false);
         }
     }
 }

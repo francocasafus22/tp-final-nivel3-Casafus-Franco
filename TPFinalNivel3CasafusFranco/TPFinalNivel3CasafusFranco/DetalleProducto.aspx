@@ -33,9 +33,7 @@
                 <label for="cantidad" class="form-label">Cantidad:</label>
                 <input type="number" class="form-control" id="cantidad" value="1" min="1" style="width: 80px;">
             </div>
-            <button class="btn btn-primary btn-lg mb-3 me-2">
-                <i class="bi bi-cart-plus"></i>Agregar a Favoritos
-            </button>
+            <asp:Button Text="Agregar a Favoritos" runat="server" CssClass="btn btn-primary btn-lg mb-3 me-2" ID="btnFavorito" OnClick="btnFavorito_Click"/>
             <button class="btn btn-outline-secondary btn-lg mb-3">
                 <i class="bi bi-heart"></i>Cancelar
             </button>

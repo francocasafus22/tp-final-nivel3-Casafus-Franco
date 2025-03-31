@@ -21,5 +21,20 @@ namespace TPFinalNivel3CasafusFranco
             }
 
         }
-	}
+
+        protected void btnFavorito_Click(object sender, EventArgs e)
+        {
+            UsuarioNegocio negocio = new UsuarioNegocio();
+			try
+			{
+				negocio.AgregarArticuloFavorito(Articulo.Id, ((User)Session["usuario"]).id);
+            }
+			catch (Exception ex)
+			{
+
+				Session.Add("error", ex.Message);
+				Response.Redirect("Error.aspx", false);
+            }
+        }
+    }
 }

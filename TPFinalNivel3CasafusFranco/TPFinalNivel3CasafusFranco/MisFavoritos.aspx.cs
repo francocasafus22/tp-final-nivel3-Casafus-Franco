@@ -1,4 +1,5 @@
-﻿using negocio;
+﻿using dominio;
+using negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,24 @@ namespace TPFinalNivel3CasafusFranco
 {
 	public partial class MisFavoritos : System.Web.UI.Page
 	{
-		protected void Page_Load(object sender, EventArgs e)
+        public List<Articulo> listaFavoritos { get; set; }
+        protected void Page_Load(object sender, EventArgs e)
 		{
 			if(!IsPostBack)
             {
                 if (Seguridad.SesionIniciada(Session["usuario"]))
                 {
-
+                    UsuarioNegocio negocio = new UsuarioNegocio();
+                    try
+                    {
+                        listaFavoritos = negocio.GetListaFavoritos(((User)Session["usuario"]).id);
+                        Session.Add("listaFavoritos", listaFavoritos);
+                    }
+                    catch (Exception ex)
+                    {
+                        Session.Add("error", ex.Message);
+                        Response.Redirect("Error.aspx", false);
+                    }
                 }
                 else
                 {
@@ -24,5 +36,10 @@ namespace TPFinalNivel3CasafusFranco
                 }
             }
         }
-	}
+
+        protected void txtBuscar_TextChanged1(object sender, EventArgs e)
+        {
+            listaFavoritos = ((List<Articulo>)Session["listaFavoritos"]).FindAll(x => x.Nombre.ToLower().Contains(txtBuscar.Text.ToLower()));
+        }
+    }
 }

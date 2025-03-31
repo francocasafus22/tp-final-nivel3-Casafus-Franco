@@ -27,5 +27,19 @@ namespace TPFinalNivel3CasafusFranco
             x.Categoria_Articulo.Descripcion.ToLower().Contains(txtBuscar.Text.ToLower()) ||
             x.Marca_Articulo.Descripcion.ToLower().Contains(txtBuscar.Text.ToLower()));
         }
+
+        protected void btnFavorito_Click(object sender, EventArgs e)
+        {
+            UsuarioNegocio negocio = new UsuarioNegocio();
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

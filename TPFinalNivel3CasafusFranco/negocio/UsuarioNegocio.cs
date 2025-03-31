@@ -71,12 +71,67 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsulta("update USERS set nombre=@nombre, apellido=@apellido, urlImagenPerfil=@urlImagenPerfil where Id=@id");
+                datos.setConsulta("update USERS set nombre=@nombre, apellido=@apellido, email=@email ,urlImagenPerfil=@urlImagenPerfil where Id=@id");
                 datos.setParametro("@nombre", usuario.nombre);
                 datos.setParametro("@apellido", usuario.apellido);
                 datos.setParametro("@urlImagenPerfil", usuario.Imagen);
                 datos.setParametro("@id", usuario.id);
+                datos.setParametro("@email", usuario.mail);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        
+        public void AgregarArticuloFavorito(int IdArticulo, int IdUser)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("INSERT INTO FAVORITOS(IdArticulo, IdUser) VALUES (@IdArticulo, @IdUser)");
+                datos.setParametro("@IdArticulo", IdArticulo);
+                datos.setParametro("@IdUser", IdUser);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public List<Articulo> GetListaFavoritos(int IdUser)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Articulo> lista = new List<Articulo>();
+            try
+            {
+                datos.setConsulta("SELECT A.Id, A.ImagenUrl, A.Nombre, A.Precio " +
+                    "FROM FAVORITOS F " +
+                    "INNER JOIN ARTICULOS A ON F.IdArticulo = A.Id " +
+                    "INNER JOIN USERS U ON F.IdUser = U.Id " +
+                    "WHERE F.IdUser = @UserId");
+                datos.setParametro("@UserId", IdUser);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Imagen = (string)datos.Lector["ImagenUrl"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    lista.Add(aux);
+                }
+                return lista;
             }
             catch (Exception ex)
             {
