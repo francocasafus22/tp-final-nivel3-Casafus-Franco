@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="DetalleProducto.aspx.cs" Inherits="TPFinalNivel3CasafusFranco.DetalleProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -9,8 +12,13 @@
 
     <div class="row">
 
-        <div class="col-md-6 mb-4" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-            <img src="<%: Articulo.Imagen %>" alt="Product" class="img-fluid rounded mb-3 product-image" id="mainImage" onerror="this.onerror=null;this.src='https://placehold.co/500?text=IMAGEN+NO+DISPONIBLE&font=roboto';">
+        <div class="col-md-6 mb-4 d-flex justify-content-center align-items-center">
+            <div class="justify-content-center align-items-center d-flex" style="width: 400px; height: 400px; overflow: hidden">
+                <img src="<%: Articulo.Imagen %>" alt="Product"
+                    class="object-fit-contain w-100 h-100"
+                    id="mainImage"
+                    onerror="this.onerror=null;this.src='https://placehold.co/400?text=IMAGEN+NO+DISPONIBLE&font=roboto';">
+            </div>
         </div>
 
 
@@ -33,10 +41,8 @@
                 <label for="cantidad" class="form-label">Cantidad:</label>
                 <input type="number" class="form-control" id="cantidad" value="1" min="1" style="width: 80px;">
             </div>
-            <asp:Button Text="Agregar a Favoritos" runat="server" CssClass="btn btn-primary btn-lg mb-3 me-2" ID="btnFavorito" OnClick="btnFavorito_Click"/>
-            <button class="btn btn-outline-secondary btn-lg mb-3">
-                <i class="bi bi-heart"></i>Cancelar
-            </button>
+            <asp:Button Text="Agregar a Favoritos" runat="server" CssClass="btn btn-primary btn-lg mb-3 me-2" ID="btnFavorito" OnClick="btnFavorito_Click" />            
+            <asp:Button Text="Volver" runat="server" CssClass="btn btn-outline-secondary btn-lg mb-3" id="btnVolver" OnClick="btnVolver_Click"/>
         </div>
     </div>
 

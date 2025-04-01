@@ -12,10 +12,10 @@
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
 
         .btn-primary {
             background-color: #4f46e5;
@@ -23,9 +23,9 @@
             transition: background-color 0.3s;
         }
 
-        .btn-primary:hover {
-            background-color: #4338ca;
-        }
+            .btn-primary:hover {
+                background-color: #4338ca;
+            }
 
         .card-img-top {
             height: 200px;
@@ -40,17 +40,14 @@
                 max-width: 50%;
             }
 
-            .buscar{
-               width: 100% !important;
-
+            .buscar {
+                width: 100% !important;
             }
-            
         }
 
-        .buscar{
+        .buscar {
             width: 50%;
         }
-
     </style>
 
 </asp:Content>
@@ -78,8 +75,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><%: item.Nombre %></h5>
                             <h5 class="card-text  fw-bold">$<%: item.Precio %></h5>
-                            <a href="DetalleProducto.aspx?id=<%: item.Id %>" class="btn btn-primary mt-3">Ver Detalles</a>
-                            <asp:Button Text="Favorito" runat="server" CssClass="btn btn-primary mt-3" ID="btnFavorito" OnClick="btnFavorito_Click"/>
+                            <a href="DetalleProducto.aspx?id=<%: item.Id %>" class="btn btn-primary mt-3">Ver Detalles</a>                          
                         </div>
                     </div>
                 </div>

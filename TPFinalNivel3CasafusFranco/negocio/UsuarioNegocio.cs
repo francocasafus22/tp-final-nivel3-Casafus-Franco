@@ -143,5 +143,26 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void EliminarFavorito(int IdArticulo, int IdUser)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("DELETE FROM FAVORITOS WHERE IdArticulo=@Articulo and IdUser=@User");
+                datos.setParametro("@Articulo", IdArticulo);
+                datos.setParametro("@User", IdUser);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
