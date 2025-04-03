@@ -38,6 +38,19 @@
             .social-icons a:hover {
                 color: #007bff;
             }
+
+        .navbar {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1030;
+        }
+
+        .navbar-nav .nav-link {
+            transition: color 0.3s ease-in-out;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: white !important;
+            }
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -48,36 +61,38 @@
         <div style="display: flex; flex-direction: column; min-height: 100vh;">
             <nav class="navbar navbar-expand-lg bg-body-primary bg-primary mb-4" data-bs-theme="dark" id="mynavbar">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Navbar</a>
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    <!-- UL ocupa TODO el ancho -->
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav w-100 d-flex justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
+                                <a class="nav-link" href="Default.aspx">Home</a>
                             </li>
                             <li class="nav-item">
-                                <asp:HyperLink ID="hlGestion" runat="server" CssClass="nav-link" NavigateUrl="GestionProductos.aspx">Lista Discos</asp:HyperLink>
+                                <asp:HyperLink ID="hlGestion" runat="server" CssClass="nav-link" NavigateUrl="GestionProductos.aspx">Gestión</asp:HyperLink>
                             </li>
                             <li class="nav-item">
                                 <asp:HyperLink ID="hlFavoritos" runat="server" CssClass="nav-link" NavigateUrl="MisFavoritos.aspx">Favoritos</asp:HyperLink>
-
                             </li>
                             <li class="nav-item">
                                 <asp:HyperLink ID="hlPerfil" runat="server" CssClass="nav-link" NavigateUrl="MiPerfil.aspx">Perfil</asp:HyperLink>
                             </li>
                         </ul>
-                        <div class="d-flex align-items-center" role="search">
-                            <asp:HyperLink ID="hyperLinkLogin" runat="server" CssClass="btn btn-outline-light p-1 me-2" NavigateUrl="Login.aspx">Iniciar Sesión</asp:HyperLink>
-                            <asp:HyperLink ID="hyperLinkRegistrar" runat="server" CssClass="btn btn-outline-light p-1 me-2" NavigateUrl="RegisterUser.aspx">Registrarse</asp:HyperLink>
-                            <asp:Button Text="Cerrar Sesión" runat="server" ID="btnSesion" CssClass="btn btn-outline-danger p-1" OnClick="btnSesion_Click" />
-                            <asp:Image ID="ProfileImage" Style="height: 40px; width: 40px; border-radius: 50%; margin-left: 10px" runat="server" />
-                        </div>
+                    </div>
+                    <!-- Botones de sesión flotando a la derecha -->
+                    <div class="position-absolute end-0 d-flex align-items-center me-3">
+                        <asp:HyperLink ID="hyperLinkLogin" runat="server" CssClass="btn btn-outline-light p-1 me-2" NavigateUrl="Login.aspx">Iniciar Sesión</asp:HyperLink>
+                        <asp:HyperLink ID="hyperLinkRegistrar" runat="server" CssClass="btn btn-outline-light p-1 me-2" NavigateUrl="RegisterUser.aspx">Registrarse</asp:HyperLink>
+                        <asp:Button Text="Cerrar Sesión" runat="server" ID="btnSesion" CssClass="btn btn-outline-danger p-1 me-2" OnClick="btnSesion_Click" />
+                        <asp:Image ID="ProfileImage" Style="height: 40px; width: 40px; border-radius: 50%;" runat="server" />
                     </div>
                 </div>
-            </nav>
-
+       
+        </nav>
+       
             <div class="container">
                 <div>
 
@@ -91,14 +106,12 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <p class="mb-0">&copy; 2024 Your Company Name. All rights reserved.</p>
+                        <p class="mb-0">Franco Casafus, estudiante de la TUP de la UTN. Trabajo final para el curso C# nivel 3.</p>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="social-icons">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Portfolio"><i class="fa fa-briefcase"></i></a>
+                            <a href="https://www.linkedin.com/in/franco-casafus-17ba47230/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>

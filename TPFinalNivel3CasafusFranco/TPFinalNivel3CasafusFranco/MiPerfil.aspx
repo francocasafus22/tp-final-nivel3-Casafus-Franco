@@ -8,7 +8,7 @@
         }
         @media (max-width: 768px) {
             .content-wrapper {
-                padding-top: 90px; /* Mayor espacio en móviles si el navbar es más alto */
+                padding-top: 60px; /* Mayor espacio en móviles si el navbar es más alto */
             }
         }
     </style>
