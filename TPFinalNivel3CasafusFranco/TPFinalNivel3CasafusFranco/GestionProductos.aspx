@@ -69,14 +69,14 @@
                 </div>
                 <div class="col-md-4">
                     <asp:Label ID="lblCriterio" runat="server" Text="Criterio"></asp:Label>
-                    <asp:DropDownList ID="ddlCriterio" runat="server" CssClass="form-control"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlCriterio" runat="server" CssClass="form-control" ></asp:DropDownList>
                 </div>
                 <div class="col-md-4">
                     <asp:Label ID="lblFiltro" runat="server" Text="Filtro"></asp:Label>
                     <asp:TextBox ID="txtFiltro" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-3">
-                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" />
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click"/>                    
                 </div>
             </div>
             <%}
@@ -84,7 +84,7 @@
 
             <div class="table-wrapper mt-3">
                 <asp:GridView ID="dgvArticulos" runat="server" CssClass="table" AutoGenerateColumns="false" DataKeyNames="Id"
-                    AllowPaging="true" PageSize="10" OnPageIndexChanging="dgvArticulos_PageIndexChanging">
+                    AllowPaging="true" PageSize="10" OnPageIndexChanging="dgvArticulos_PageIndexChanging" OnRowDeleting="dgvArticulos_RowDeleting"  OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged">
 
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Codigo" />

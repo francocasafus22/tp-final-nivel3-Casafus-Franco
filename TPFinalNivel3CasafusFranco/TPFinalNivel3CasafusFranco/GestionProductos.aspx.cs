@@ -20,7 +20,9 @@ namespace TPFinalNivel3CasafusFranco
                 dgvArticulos.DataSource = Session["listaArticulos"];
                 dgvArticulos.DataBind();
                 txtBuscar.Attributes.Add("placeholder", "Buscar por nombre, marca o categoria...");
+                btnBuscar.Enabled = false;
             }
+
         }
 
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,6 +73,8 @@ namespace TPFinalNivel3CasafusFranco
                 ddlCriterio.Items.Add("Termina con");
                 ddlCriterio.Items.Add("Contiene");
             }
+            
+            btnBuscar.Enabled = true;
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -79,7 +83,7 @@ namespace TPFinalNivel3CasafusFranco
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 dgvArticulos.DataSource = negocio.busquedaFiltrada(txtFiltro.Text, ddlCampo.SelectedItem.ToString(), ddlCriterio.SelectedItem.ToString());
-                dgvArticulos.DataBind();
+                dgvArticulos.DataBind();                
             }
             catch (Exception ex)
             {
@@ -98,5 +102,6 @@ namespace TPFinalNivel3CasafusFranco
             }
 
         }
+
     }
 }

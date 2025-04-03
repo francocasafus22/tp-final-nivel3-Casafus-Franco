@@ -13,6 +13,7 @@ namespace TPFinalNivel3CasafusFranco
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
                 if (Seguridad.SesionIniciada(Session["usuario"]))
@@ -45,6 +46,7 @@ namespace TPFinalNivel3CasafusFranco
                     Response.Redirect("Default.aspx", false);
                 }
             }
+            
         }
 
         protected void txtImagen_TextChanged(object sender, EventArgs e)
