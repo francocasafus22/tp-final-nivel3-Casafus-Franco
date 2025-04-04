@@ -60,10 +60,17 @@
             <div class="col-12 d-flex justify-content-center">
                 <div class="input-group mb-3 buscar">
                     <asp:TextBox runat="server" AutoPostBack="true" CssClass="form-control" ID="txtBuscar" OnTextChanged="txtBuscar_TextChanged1" />
-                    <button class="btn btn-primary" type="submit">Buscar</button>
+                    <asp:Button Text="Buscar" runat="server" CssClass="btn btn-primary" OnClick="txtBuscar_TextChanged1"/>
                 </div>
-            </div>
 
+            </div>
+            <div class="d-flex flex-wrap gap-2 mb-4 justify-content-center">
+                <asp:Button runat="server" ID="btnCelulares" Text="Celulares" CssClass="btn btn-outline-primary" CommandName="Celulares" OnCommand="btnCateogoria_Command"/>
+                <asp:Button runat="server" ID="btnMedia" Text="Media" CssClass="btn btn-outline-primary" CommandName="Media"  OnCommand="btnCateogoria_Command"/>
+                <asp:Button runat="server" ID="btnTelevisores" Text="Televisores" CssClass="btn btn-outline-primary" CommandName="Televisores" OnCommand="btnCateogoria_Command"/>
+                <asp:Button runat="server" ID="btnAudio" Text="Audio" CssClass="btn btn-outline-primary" CommandName="Audio" OnCommand="btnCateogoria_Command" />
+            </div>
+                
             <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4">
                 <% foreach (dominio.Articulo item in listaArticulos)
                     {%>
@@ -75,7 +82,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><%: item.Nombre %></h5>
                             <h5 class="card-text  fw-bold">$<%: item.Precio %></h5>
-                            <a href="DetalleProducto.aspx?id=<%: item.Id %>" class="btn btn-primary mt-3">Ver Detalles</a>                          
+                            <a href="DetalleProducto.aspx?id=<%: item.Id %>" class="btn btn-primary mt-3">Ver Detalles</a>
                         </div>
                     </div>
                 </div>

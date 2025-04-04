@@ -20,7 +20,10 @@
         <div class="row justify-content-center align-items-center min-vh-100">
 
             <div class="col-md-4 text-center">
-                <asp:Image ImageUrl="https://static.vecteezy.com/system/resources/previews/004/511/281/original/default-avatar-photo-placeholder-profile-picture-vector.jpg" runat="server" CssClass="rounded-circle" AlternateText="Foto de Perfil" Width="250" ID="ImagenPerfil" />
+                <asp:Image ImageUrl="https://static.vecteezy.com/system/resources/previews/004/511/281/original/default-avatar-photo-placeholder-profile-picture-vector.jpg"
+                    runat="server" CssClass="rounded-circle" 
+                    AlternateText="Foto de Perfil" Width="250" 
+                    ID="ImagenPerfil"  onerror="this.onerror=null;this.src='https://placehold.co/600?text=IMAGEN+NO+DISPONIBLE&font=roboto';"/>
             </div>
 
             <div class="col-md-8">
@@ -47,13 +50,7 @@
                         <div class="col-md-12">
                             <label for="urlImagenPerfil" class="form-label">URL de Imagen de Perfil</label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="txtImagen" OnTextChanged="txtImagen_TextChanged" AutoPostBack="true" />
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="esAdmin" runat="server" disabled>
-                                <label class="form-check-label" for="esAdmin">Administrador</label>
-                            </div>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
                 <div class="text-center ">

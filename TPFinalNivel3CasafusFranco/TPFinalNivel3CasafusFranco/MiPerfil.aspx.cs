@@ -20,7 +20,7 @@ namespace TPFinalNivel3CasafusFranco
                 {
                     txtID.Text = ((User)Session["usuario"]).id.ToString();
                     txtEmail.Text = ((User)Session["usuario"]).mail;
-                    esAdmin.Checked = ((User)Session["usuario"]).TipoUsuario;
+                   
 
                     if (((User)Session["usuario"]).nombre == null)
                         txtNombre.Attributes.Add("placeholder", "Ingresa tu nombre");
@@ -32,7 +32,7 @@ namespace TPFinalNivel3CasafusFranco
                     else
                         txtApellido.Text = ((User)Session["usuario"]).apellido;
 
-                    if (((User)Session["usuario"]).Imagen == null)
+                    if (string.IsNullOrEmpty(((User)Session["usuario"]).Imagen))
                         txtImagen.Attributes.Add("placeholder", "Ingresa la URL de tu imagen de perfil");
                     else
                     {
@@ -51,7 +51,10 @@ namespace TPFinalNivel3CasafusFranco
 
         protected void txtImagen_TextChanged(object sender, EventArgs e)
         {
-            ImagenPerfil.ImageUrl = txtImagen.Text;
+            if (txtImagen.Text != "")
+                ImagenPerfil.ImageUrl = txtImagen.Text;
+            else
+                ImagenPerfil.ImageUrl = "https://static.vecteezy.com/system/resources/previews/004/511/281/original/default-avatar-photo-placeholder-profile-picture-vector.jpg";
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -61,13 +64,12 @@ namespace TPFinalNivel3CasafusFranco
                 return;
 
             UsuarioNegocio negocio = new UsuarioNegocio();
-            User usuario = new User();            
+            User usuario = ((User)Session["usuario"]);            
             usuario.mail = txtEmail.Text;
             usuario.nombre = txtNombre.Text;
             usuario.apellido = txtApellido.Text;
-            usuario.Imagen = txtImagen.Text;
-            usuario.id = int.Parse(txtID.Text);
-            negocio.Actualizar(usuario);
+            usuario.Imagen = txtImagen.Text;                       
+            negocio.Actualizar(usuario);            
             Session.Add("usuario", usuario);
             Response.Redirect("Default.aspx", false);
         }

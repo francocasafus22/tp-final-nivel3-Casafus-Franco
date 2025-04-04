@@ -65,12 +65,12 @@
             <div class="col-12 d-flex justify-content-center">
                 <div class="input-group mb-3 buscar">
                     <asp:TextBox runat="server" AutoPostBack="true" CssClass="form-control" ID="txtBuscar" OnTextChanged="txtBuscar_TextChanged1"/>
-                    <button class="btn btn-primary" type="submit">Buscar</button>
+                    <button class="btn btn-primary">Buscar</button>
                 </div>
             </div>
 
             <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4">
-                <% if (listaFavoritos != null)
+                <% if (listaFavoritos.Count != 0)
                     {
                         foreach (dominio.Articulo item in listaFavoritos)
                         {%>
@@ -81,7 +81,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title"><%: item.Nombre %></h5>
-                            <h5 class="card-text  fw-bold">$<%: item.Precio %></h5>
+                            <h5 class="card-text  fw-bold">$<%: item.Precio.ToString("0.00") %></h5>
                             <a href="DetalleProducto.aspx?id=<%: item.Id %>" class="btn btn-primary mt-3">Ver Detalles</a>
 
                         </div>
@@ -92,7 +92,7 @@
                     else
                     {  %> 
             </div>
-            <h1 class="text-center mt-4 display-6 ">No hay articulos favoritos</h1> <%} %>
+            <h1 class="text-center mt-4 display-6 " runat="server" id="lblfavorito">No hay articulos favoritos</h1> <%} %>
         </ContentTemplate>
     </asp:UpdatePanel>
 

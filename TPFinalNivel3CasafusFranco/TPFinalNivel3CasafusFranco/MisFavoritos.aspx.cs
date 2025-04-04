@@ -22,7 +22,7 @@ namespace TPFinalNivel3CasafusFranco
                     try
                     {
                         listaFavoritos = negocio.GetListaFavoritos(((User)Session["usuario"]).id);
-                        Session.Add("listaFavoritos", listaFavoritos);
+                        Session.Add("listaFavoritos", listaFavoritos);                        
                     }
                     catch (Exception ex)
                     {

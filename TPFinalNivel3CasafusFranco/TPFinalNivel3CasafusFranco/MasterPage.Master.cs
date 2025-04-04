@@ -20,7 +20,7 @@ namespace TPFinalNivel3CasafusFranco
                 hlFavoritos.Visible = true;
                 hlPerfil.Visible = true;    
                 hyperLinkLogin.Visible = false;                
-                if (((User)Session["usuario"]).Imagen == null)
+                if (string.IsNullOrEmpty(((User)Session["usuario"]).Imagen))
                     ProfileImage.Visible = false;   
                 else
                     ProfileImage.ImageUrl = ((User)Session["usuario"]).Imagen;

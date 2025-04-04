@@ -27,7 +27,8 @@
                         ID="Img_Articulo"
                         runat="server"
                         CssClass="object-fit-contain w-100 h-100"
-                        ImageUrl="https://placehold.co/800?text=IMAGEN+NO+DISPONIBLE&font=roboto" />
+                        ImageUrl="https://placehold.co/800?text=IMAGEN+NO+DISPONIBLE&font=roboto"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600?text=IMAGEN+NO+DISPONIBLE&font=roboto';" />
                 </div>
             </div>
             <div class="col-md-8">
@@ -76,6 +77,7 @@
                         <div class="col-md-12 mb-3">
                             <label for="txtImagen" class="form-label">Url Imagen:</label>
                             <asp:TextBox ID="txtImagen" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" MaxLength="1000"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="Imagen requerida" ControlToValidate="txtImagen" CssClass="validacion" Display="Dynamic" runat="server" />
                         </div>
                     </div>
 

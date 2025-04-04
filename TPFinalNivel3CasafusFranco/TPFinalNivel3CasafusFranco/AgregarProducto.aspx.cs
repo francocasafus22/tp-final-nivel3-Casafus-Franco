@@ -52,7 +52,10 @@ namespace TPFinalNivel3CasafusFranco
 
         protected void txtImagen_TextChanged(object sender, EventArgs e)
         {
-            Img_Articulo.ImageUrl = txtImagen.Text;
+            if (txtImagen.Text != "")
+                Img_Articulo.ImageUrl = txtImagen.Text;        
+            else
+                Img_Articulo.ImageUrl = "https://placehold.co/800?text=IMAGEN+NO+DISPONIBLE&font=roboto";
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
