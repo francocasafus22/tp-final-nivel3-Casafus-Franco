@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,8 @@ namespace negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("Server=FRANCOPC\\SQLEXPRESS;Database=CATALOGO_WEB_DB;Trusted_Connection=True;");
+            //conexion = new SqlConnection("Server=FRANCOPC\\SQLEXPRESS;Database=CATALOGO_WEB_DB;Trusted_Connection=True;");
+            conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
             comando = new SqlCommand();
         }
 
