@@ -89,7 +89,7 @@ namespace TPFinalNivel3CasafusFranco
             {
 
                 Session.Add("error", ex.Message);
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("error.aspx", false);
             }
         }
 

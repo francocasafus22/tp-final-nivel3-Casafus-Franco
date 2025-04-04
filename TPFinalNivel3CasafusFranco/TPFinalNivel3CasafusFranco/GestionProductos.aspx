@@ -24,7 +24,7 @@
             }
 
         table {
-            width: 100%;
+            width: auto;
             border-collapse: collapse;
         }
 
@@ -32,6 +32,31 @@
             overflow-x: auto;
         }
 
+
+        .grid-pager-paging td {
+            text-align: center;
+            padding: 5px;
+        }
+
+        .grid-pager-paging a, .grid-pager-paging span {
+            margin: 0 3px;
+            padding: 4px 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+        }
+
+            .grid-pager-paging a:hover {
+                background-color: #f0f0f0;
+            }
+
+        .grid-pager-paging span {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </asp:Content>
@@ -69,14 +94,16 @@
                 </div>
                 <div class="col-md-4">
                     <asp:Label ID="lblCriterio" runat="server" Text="Criterio"></asp:Label>
-                    <asp:DropDownList ID="ddlCriterio" runat="server" CssClass="form-control" ></asp:DropDownList>
+                    <asp:DropDownList ID="ddlCriterio" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
                 <div class="col-md-4">
                     <asp:Label ID="lblFiltro" runat="server" Text="Filtro"></asp:Label>
-                    <asp:TextBox ID="txtFiltro" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:Panel runat="server" DefaultButton="btnBuscar">
+                        <asp:TextBox ID="txtFiltro" runat="server" CssClass="form-control"></asp:TextBox>
+                    </asp:Panel>
                 </div>
                 <div class="col-md-3">
-                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click"/>                    
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" />
                 </div>
             </div>
             <%}
@@ -84,7 +111,7 @@
 
             <div class="table-wrapper mt-3">
                 <asp:GridView ID="dgvArticulos" runat="server" CssClass="table" AutoGenerateColumns="false" DataKeyNames="Id"
-                    AllowPaging="true" PageSize="10" OnPageIndexChanging="dgvArticulos_PageIndexChanging" OnRowDeleting="dgvArticulos_RowDeleting"  OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged">
+                    AllowPaging="true" PageSize="10" OnPageIndexChanging="dgvArticulos_PageIndexChanging" OnRowDeleting="dgvArticulos_RowDeleting" OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged" PagerStyle-CssClass="grid-pager-paging">
 
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
